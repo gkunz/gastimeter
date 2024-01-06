@@ -2,19 +2,17 @@
 # SPDX-FileCopyrightText: 2024 Georg Kunz <der.schorsch@gmail.com>
 # SPDX-License-Identifier: MIT
 #
-import base64
 import cv2 as cv
-import configator
 import numpy as np
 import http.client
 import json
 import logging
-import os
 import urllib.request
 import urllib.parse
 import urllib.error
 
-from error import exit_with_error
+import gastimeter.configator as configator
+from gastimeter.error import exit_with_error
 
 
 def send_request(image):

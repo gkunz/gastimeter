@@ -3,12 +3,11 @@ requires = ["setuptools >= 61.0"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "gastimator"
+name = "gastimeter"
 version = "0.2.0"
 requires-python = ">= 3.8"
 authors = [
     {name = "Georg Kunz", email = "der.schorsch@gmail.com"},
-
 ]
 description = "Extract text from an image using Azure Cognitive Services."
 dependencies = [
@@ -24,5 +23,8 @@ classifiers = [
   "Programming Language :: Python :: 3.9",
 ]
 
+[project.urls]
+Homepage = "https://github.com/gkunz/gastimeter"
+
 [project.scripts]
-gastimator = "cli.cli:main"
+gastimeter = "gastimeter.cli.cli:main"

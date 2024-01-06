@@ -4,7 +4,7 @@
 #
 import json
 import logging
-from error import exit_with_error
+from gastimeter.error import exit_with_error
 
 def parse_response(response):
     # get all words found on page 1

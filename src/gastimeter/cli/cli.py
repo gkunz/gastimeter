@@ -8,13 +8,13 @@ import datetime
 import logging
 import os
 
-from error import exit_with_error
+from gastimeter.error import exit_with_error
 
-import analyzer
-import configator as configator
-import imagegrabber
-import preprocessor
-import responseparser
+import gastimeter.analyzer as analyzer
+import gastimeter.configator as configator
+import gastimeter.imagegrabber as imagegrabber
+import gastimeter.preprocessor as preprocessor
+import gastimeter.responseparser as responseparser
 
 
 def process_command_line_arguments() -> any:
@@ -22,7 +22,7 @@ def process_command_line_arguments() -> any:
     Define and process command line arguments.
     '''
     parser = argparse.ArgumentParser(
-                        prog='gastimator',
+                        prog='gastimeter',
                         description='Extract a meter reading from an image.')
     parser.add_argument('-i',
                         '--image',
@@ -60,7 +60,7 @@ def configure_logging(args) -> None:
 
     logging.basicConfig(format='%(asctime)s - %(levelname)s - %(message)s',
                         level=level,
-                        filename=os.path.join(args.output, 'gastimator.log'))
+                        filename=os.path.join(args.output, 'gastimeter.log'))
 
 
 def validate_configuration(args) -> None:

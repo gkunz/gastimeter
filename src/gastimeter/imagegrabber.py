@@ -3,7 +3,8 @@
 # SPDX-License-Identifier: MIT
 #
 import cv2 as cv
-from error import exit_with_error
+
+from gastimeter.error import exit_with_error
 
 
 def capture_image():

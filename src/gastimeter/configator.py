@@ -3,7 +3,7 @@
 # SPDX-License-Identifier: MIT
 #
 import os
-from error import exit_with_error
+from gastimeter.error import exit_with_error
 
 # the command line arguments
 args = None

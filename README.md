@@ -1,20 +1,20 @@
-# Gastimator
+# Gastimeter
 
-Gastimator is a simple tool to obtain readings from a gas meter by means of OCR (Optical Character Regonition). As OCR is not 100% accurate, the tool effectively provides a guestimate of the gas meter reading - hence the name. 
+`gastimeter` is a simple tool to obtain readings from a gas meter by means of OCR (Optical Character Regonition). As OCR is not 100% accurate, the tool effectively provides a guestimate of the gas meter reading - hence the name. 
 
 ## Installation
 
-Clone the repository and install `gastimator` using pip - optionally in a virtually environment.
+Clone the repository and install `gastimeter` using pip - optionally in a virtually environment.
 
 ```
-  git clone https://github.com/gkunz/gastimator.git
-  cd gastimator
+  git clone https://github.com/gkunz/gastimeter.git
+  cd gastimeter
   pip3 install .
 ```
 
 ## Known issues
 
-`gastimator` uses [OpenCV](https://opencv.org/) to capture images from a connected camera. If running `gastimator` on a RaspberryPi on Debian Bullseye (or higher), note that [OpenCV does not work (yet)](https://github.com/opencv/opencv/issues/22820#issuecomment-1339283736) with the new libcamera subsystem. There are two possible workarounds:
+`gastimeter` uses [OpenCV](https://opencv.org/) to capture images from a connected camera. If running `gastimeter` on a RaspberryPi on Debian Bullseye (or higher), note that [OpenCV does not work (yet)](https://github.com/opencv/opencv/issues/22820#issuecomment-1339283736) with the new libcamera subsystem. There are two possible workarounds:
 
 
 ### Use the legacy camera subsystem based on V4L2
@@ -29,7 +29,7 @@ Note that this camera subsystem is deprecated and will be removed in the future.
 
 ### Use libcamera tooling
 
-Use `libcamera-jpeg` to capture an image and feed this into `gastimator` using the `--image` option.
+Use `libcamera-jpeg` to capture an image and feed this into `gastimeter` using the `--image` option.
 
 
 ## License
