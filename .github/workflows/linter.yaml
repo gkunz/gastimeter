@@ -13,7 +13,6 @@ jobs:
     permissions:
       contents: read
       packages: read
-      # To report GitHub Actions status checks
       statuses: write
 
     steps:
@@ -28,8 +27,7 @@ jobs:
         uses: super-linter/super-linter@v5.7.2  # x-release-please-version
         env:
           DEFAULT_BRANCH: main
-          # To report GitHub Actions status checks
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-   	  VALIDATE_PYTHON_PYLINT: true
+          VALIDATE_PYTHON_PYLINT: true
           FILTER_REGEX_INCLUDE: .*src/.*
 ...
