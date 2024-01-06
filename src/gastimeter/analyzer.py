@@ -2,16 +2,19 @@
 # SPDX-FileCopyrightText: 2024 Georg Kunz <der.schorsch@gmail.com>
 # SPDX-License-Identifier: MIT
 #
-import cv2 as cv
-import numpy as np
+'''
+Utilizing Azure AI services to perform OCR on an image.
+'''
 import http.client
 import json
 import logging
 import urllib.request
 import urllib.parse
 import urllib.error
+import cv2 as cv
+import numpy as np
 
-import gastimeter.configator as configator
+from gastimeter.configator import Config
 from gastimeter.error import exit_with_error
 
 
@@ -21,7 +24,7 @@ def send_request(image):
     '''
     headers = {
         'Content-Type': 'application/octet-stream',
-        'Ocp-Apim-Subscription-Key': configator.subscription_key,
+        'Ocp-Apim-Subscription-Key': Config.subscription_key,
     }
 
     params = urllib.parse.urlencode({
@@ -35,34 +38,18 @@ def send_request(image):
     encoded_image = cv.imencode('.jpg', image)[1]
     binary_image = np.array(encoded_image).tobytes()
 
-    try:
-        conn = http.client.HTTPSConnection('{}.cognitiveservices.azure.com'.format(configator.service_name))
-        conn.request("POST",
-                    "/computervision/imageanalysis:analyze?api-version=2023-02-01-preview&%s" % params,
-                    binary_image,
-                    headers)
-        response = conn.getresponse()
+    conn = http.client.HTTPSConnection(f'{Config.service_name}.cognitiveservices.azure.com')
+    conn.request("POST",
+                f"/computervision/imageanalysis:analyze?api-version=2023-02-01-preview&{params}",
+                binary_image,
+                headers)
+    response = conn.getresponse()
 
-        if response.status != 200:
-            logging.error('Status code of response is {}'.format(response.status()))
-            exit(-1)
+    if response.status != 200:
+        exit_with_error(f'Status code of response is {response.status}')
 
-        data = json.loads(response.read().decode())
-        logging.debug('Response data: {}'.format(data))
+    data = json.loads(response.read().decode())
+    logging.debug('Response data: %s', data)
 
-        conn.close()
-        return data
-    
-    except Exception as e:
-        print("[Errno {0}] {1}".format(e.errno, e.strerror))
-
-
-def main():
-    with open('data/20231214-1800.jpg', 'rb') as f:
-        image = f.read()
-    send_request(image)
-
-
-if __name__ == "__main__":
-    main()
- 
+    conn.close()
+    return data
