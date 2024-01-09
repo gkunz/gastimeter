@@ -1,3 +1,5 @@
 output
 venv
 dist
+build
+src/gastimeter.egg-info/
