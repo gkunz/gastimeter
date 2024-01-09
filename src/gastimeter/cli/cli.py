@@ -18,6 +18,7 @@ from gastimeter.configator import Config
 from gastimeter import imagegrabber
 from gastimeter import preprocessor
 from gastimeter import responseparser
+from gastimeter import __version__
 
 
 def process_command_line_arguments() -> any:
@@ -45,10 +46,15 @@ def process_command_line_arguments() -> any:
                         '--preprocess',
                         action='store_true',
                         help='If set, apply preprocessing to the image before the OCR analysis.')
-    parser.add_argument('-v',
-                        '--verbose',
+    parser.add_argument('-d',
+                        '--debug',
                         action='store_true',
-                        help='Enable verbose logging.')
+                        help='Enable debug logging.')
+    parser.add_argument('-v',
+                        '--version',
+                        action='version',
+                        version=__version__,
+                        help='Display the version of this program.')
 
     return parser.parse_args()
 
@@ -58,7 +64,7 @@ def configure_logging(args) -> None:
     Set-up logging
     '''
     level = logging.INFO
-    if args.verbose:
+    if args.debug:
         level = logging.DEBUG
 
     if not os.path.exists(args.output):

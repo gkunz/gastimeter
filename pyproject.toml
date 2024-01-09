@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "gastimeter"
-version = "0.2.0"
+dynamic = ["version"]
 requires-python = ">= 3.8"
 authors = [
     {name = "Georg Kunz", email = "der.schorsch@gmail.com"},
@@ -28,3 +28,6 @@ Homepage = "https://github.com/gkunz/gastimeter"
 
 [project.scripts]
 gastimeter = "gastimeter.cli.cli:main"
+
+[tool.setuptools.dynamic]
+version = {attr = "gastimeter.__version__"}
