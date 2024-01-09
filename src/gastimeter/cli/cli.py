@@ -133,7 +133,7 @@ def main():
     cv.imwrite(os.path.join(args.output, timestamp + '.jpg'), image)
 
     with open(os.path.join(args.output, 'readings.csv'), '+at', encoding="utf-8") as f:
-        f.writelines(timestamp + ',' + str(reading))
+        f.writelines(timestamp + ',' + str(reading) + '\n')
 
     #
     # just print the reading to stdout for further processing by other tools
