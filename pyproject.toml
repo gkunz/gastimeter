@@ -10,6 +10,7 @@ authors = [
     {name = "Georg Kunz", email = "der.schorsch@gmail.com"},
 ]
 description = "Extract text from an image using Azure Cognitive Services."
+readme = "README.md"
 dependencies = [
   "opencv-python"
 ]
