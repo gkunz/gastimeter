@@ -15,6 +15,6 @@ jobs:
       with:
         python-version: "3.9"
     - name: Install pypa/build
-      run: >-
+      run: |
         pushd tests
         python3 unit_tests.py
