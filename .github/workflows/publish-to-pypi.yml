@@ -1,7 +1,8 @@
 name: Publish package to PyPI
 
 on:
-  pull_request: null
+  push:
+    tags: '**'
 
 jobs:
   build:
