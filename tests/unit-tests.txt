@@ -1,6 +1,0 @@
-# - run gastimeter on image (full flow)
-#   - limit runs to avoid charging
-# - test imagegrabber
-#   - 
-# - test CLI
-#   - 
