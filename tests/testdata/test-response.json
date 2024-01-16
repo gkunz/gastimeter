@@ -1,0 +1,140 @@
+{
+    "readResult": {
+      "stringIndexType": "TextElements",
+      "content": "0 46 6 35 1",
+      "pages": [
+        {
+          "height": 1944.0,
+          "width": 2592.0,
+          "angle": -3.1701,
+          "pageNumber": 1,
+          "words": [
+            {
+              "content": "0",
+              "boundingBox": [
+                601.0,
+                556.0,
+                701.0,
+                543.0,
+                708.0,
+                712.0,
+                608.0,
+                719.0
+              ],
+              "confidence": 1.0,
+              "span": {
+                "offset": 0,
+                "length": 1
+              }
+            },
+            {
+              "content": "46",
+              "boundingBox": [
+                818.0,
+                529.0,
+                1135.0,
+                497.0,
+                1142.0,
+                677.0,
+                825.0,
+                701.0
+              ],
+              "confidence": 0.538,
+              "span": {
+                "offset": 2,
+                "length": 2
+              }
+            },
+            {
+              "content": "6",
+              "boundingBox": [
+                1264.0,
+                487.0,
+                1376.0,
+                479.0,
+                1382.0,
+                661.0,
+                1270.0,
+                668.0
+              ],
+              "confidence": 0.997,
+              "span": {
+                "offset": 5,
+                "length": 1
+              }
+            },
+            {
+              "content": "35",
+              "boundingBox": [
+                1516.0,
+                471.0,
+                1869.0,
+                459.0,
+                1875.0,
+                635.0,
+                1522.0,
+                652.0
+              ],
+              "confidence": 0.447,
+              "span": {
+                "offset": 7,
+                "length": 2
+              }
+            },
+            {
+              "content": "1",
+              "boundingBox": [
+                2022.0,
+                458.0,
+                2116.0,
+                458.0,
+                2122.0,
+                626.0,
+                2027.0,
+                630.0
+              ],
+              "confidence": 1.0,
+              "span": {
+                "offset": 10,
+                "length": 1
+              }
+            }
+          ],
+          "spans": [
+            {
+              "offset": 0,
+              "length": 11
+            }
+          ],
+          "lines": [
+            {
+              "content": "0 46 6 35 1",
+              "boundingBox": [
+                592.0,
+                530.0,
+                2117.0,
+                457.0,
+                2125.0,
+                623.0,
+                599.0,
+                719.0
+              ],
+              "spans": [
+                {
+                  "offset": 0,
+                  "length": 11
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "styles": [],
+      "modelVersion": "2022-04-30"
+    },
+    "modelVersion": "2023-02-01-preview",
+    "metadata": {
+      "width": 2592,
+      "height": 1944
+    }
+}
