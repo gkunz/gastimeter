@@ -1,4 +1,4 @@
-[![OpenSSF Scorecard](https://api.securityscorecards.dev/projects/github.com/ossf/scorecard/badge)](https://securityscorecards.dev/viewer/?uri=github.com/gkunz/gastimeter)
+[![OpenSSF Scorecard](https://api.securityscorecards.dev/projects/github.com/gkunz/gastimeter/badge)](https://securityscorecards.dev/viewer/?uri=github.com/gkunz/gastimeter)
 
 # Gastimeter
 
