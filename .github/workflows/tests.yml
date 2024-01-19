@@ -1,15 +1,15 @@
 name: Run unit tests
 
-permissions:
-  contents: read
-  packages: read
-  statuses: write
-
 on:
   pull_request: null
 
 jobs:
   tests:
+    permissions:
+      contents: read
+      packages: read
+      statuses: write
+
     name: Run tests
     runs-on: ubuntu-latest
 
