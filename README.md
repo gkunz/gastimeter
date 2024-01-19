@@ -1,3 +1,5 @@
+[![OpenSSF Scorecard](https://api.securityscorecards.dev/projects/github.com/gkunz/gastimeter/badge)](https://securityscorecards.dev/viewer/?uri=github.com/gkunz/gastimeter)
+
 # Gastimeter
 
 `gastimeter` is a simple tool to obtain readings from a gas meter by means of OCR (Optical Character Regonition). As OCR is not 100% accurate, the tool effectively provides a guestimate of the gas meter reading - hence the name. 
