@@ -3,6 +3,8 @@ name: Run unit tests
 on:
   pull_request: null
 
+permissions: read-all
+
 jobs:
   tests:
     permissions:
