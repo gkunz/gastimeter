@@ -10,4 +10,5 @@ Only the latest version will receive security updates.
 
 ## Reporting a Vulnerability
 
-Use the private vuln reporting functionality of GitHub.
+Please make use of [private vulnerability](https://github.com/gkunz/gastimeter/security/advisories?state=Triage)
+reporting.
