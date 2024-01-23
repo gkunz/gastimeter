@@ -1,3 +1,8 @@
+#
+# SPDX-FileCopyrightText: 2024 Georg Kunz <der.schorsch@gmail.com>
+# SPDX-License-Identifier: MIT
+#
+
 [build-system]
 requires = ["setuptools >= 61.0"]
 build-backend = "setuptools.build_meta"

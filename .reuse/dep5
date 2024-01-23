@@ -1,0 +1,14 @@
+Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Upstream-Name: gastimeter
+Upstream-Contact: Georg Kunz, <der.schorsch@gmail.com>
+Source: https://github.com/gkunz/gastimeter
+
+# Markdown documentation
+Files: README.md SECURITY.md
+Copyright: Georg Kunz, <der.schorsch@gmail.com>
+License: CC-BY-4.0
+
+# data for unit tests
+Files: tests/testdata/*
+Copyright: Georg Kunz, <der.schorsch@gmail.com>
+License: CC-BY-4.0
