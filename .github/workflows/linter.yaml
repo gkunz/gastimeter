@@ -1,4 +1,7 @@
----
+#
+# SPDX-FileCopyrightText: 2024 Georg Kunz <der.schorsch@gmail.com>
+# SPDX-License-Identifier: MIT
+#
 name: Lint
 
 on:  # yamllint disable-line rule:truthy
@@ -32,4 +35,3 @@ jobs:
           VALIDATE_PYTHON_PYLINT: true
           PYTHON_PYLINT_CONFIG_FILE: pylintrc
           FILTER_REGEX_INCLUDE: .*src/.*
-...
