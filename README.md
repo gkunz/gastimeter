@@ -1,4 +1,5 @@
 [![OpenSSF Scorecard](https://api.securityscorecards.dev/projects/github.com/gkunz/gastimeter/badge)](https://securityscorecards.dev/viewer/?uri=github.com/gkunz/gastimeter)
+[![REUSE status](https://api.reuse.software/badge/github.com/gkunz/gastimeter)](https://api.reuse.software/info/github.com/gkunz/gastimeter)
 
 # Gastimeter
 
