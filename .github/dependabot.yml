@@ -1,7 +1,3 @@
-#
-# SPDX-FileCopyrightText: 2024 Georg Kunz <der.schorsch@gmail.com>
-# SPDX-License-Identifier: MIT
-#
 version: 2
 updates:
   - package-ecosystem: "pip"
