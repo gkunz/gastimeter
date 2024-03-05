@@ -3,8 +3,7 @@
 # SPDX-License-Identifier: MIT
 #
 optConfig:
-  optOutStrategy: true
-  disableRepoOverride: true
+  optIn: true
 action: issue
 enforceDefault: true
 requireApproval: true
