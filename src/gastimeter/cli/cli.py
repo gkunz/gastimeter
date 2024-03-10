@@ -121,17 +121,25 @@ def main():
         image = preprocessor.preprocess_image(image)
 
     #
-    # run image through OCR processing
-    #
-    response = analyzer.send_request(image)
-    reading = responseparser.parse_response(response)
-
-    #
-    # write captured image and reading to disk
+    # write captured image to disk. If any of the following steps fail,
+    # at least the raw image has been saved for later processing.
     #
     timestamp = datetime.datetime.now().strftime('%Y-%m-%dT%H:%M:%S')
     cv.imwrite(os.path.join(args.output, timestamp + '.jpg'), image)
 
+    #
+    # run image through OCR processing
+    #
+    response = analyzer.send_request(image)
+
+    #
+    # parse image
+    #
+    reading = responseparser.parse_response(response)
+
+    #
+    # write reading to disk
+    #
     with open(os.path.join(args.output, 'readings.csv'), '+at', encoding="utf-8") as f:
         f.writelines(timestamp + ',' + str(reading) + '\n')
 
