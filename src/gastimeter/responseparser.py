@@ -32,6 +32,7 @@ def parse_response(response):
 
     logging.debug('concatenated string of words: %s', meter_reading_string)
 
+    float_meter_reading_string = 0.0
     if '.' in meter_reading_string or ',' in meter_reading_string:
         # check for a comma or decimal point
         if len(meter_reading_string) != 8:
