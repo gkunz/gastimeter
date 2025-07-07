@@ -36,7 +36,7 @@ class TestResponseParser(unittest.TestCase):
             content = f.read()
             response = json.loads(content)
             reading = parse_response(response)
-            self.assertEqual(reading, 4663.51)
+            self.assertEqual(reading, 5650.81)
 
 
 if __name__ == '__main__':

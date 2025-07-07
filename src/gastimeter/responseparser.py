@@ -13,23 +13,11 @@ def parse_response(response):
     '''
     Parse the result.
     '''
-    # get all words found on page 1
-    words = response['readResult']['pages'][0]['words']
-    logging.debug('raw list of words: %s', words)
+    # get all words found on line 1
+    line = response['readResult']['blocks'][0]['lines'][0]['text']
+    logging.debug('raw list of words: %s', line)
 
-    # sort words by the upper left x-coordinate of the bounding box
-    sorted_words = sorted(words, key=lambda word: word['boundingBox'][0])
-    logging.debug('sorted list of words: %s', sorted_words)
-
-    # iterate over words
-    meter_reading_string = ''
-    for word in sorted_words:
-        # remove all whitespace (if any)
-        chars = word['content'].replace(' ', '')
-
-        # concatenate all individual words
-        meter_reading_string += chars
-
+    meter_reading_string = line.replace(' ', '')
     logging.debug('concatenated string of words: %s', meter_reading_string)
 
     float_meter_reading_string = 0.0
