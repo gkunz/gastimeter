@@ -40,13 +40,13 @@ def send_request(image):
 
     conn = http.client.HTTPSConnection(f'{Config.service_name}.cognitiveservices.azure.com')
     conn.request("POST",
-                f"/computervision/imageanalysis:analyze?api-version=2023-02-01-preview&{params}",
+                f"/computervision/imageanalysis:analyze?api-version=2024-02-01&{params}",
                 binary_image,
                 headers)
     response = conn.getresponse()
 
     if response.status != 200:
-        exit_with_error(f'Status code of response is {response.status}')
+        exit_with_error(f'Status code {response.status}. Response is {response.read()}')
 
     data = json.loads(response.read().decode())
     logging.debug('Response data: %s', data)
