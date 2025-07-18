@@ -124,8 +124,12 @@ def main():
     # write captured image to disk. If any of the following steps fail,
     # at least the raw image has been saved for later processing.
     #
+    # do not write the image to disk if it is already on disk and
+    # was supplied with the --image command line option.
+    #
     timestamp = datetime.datetime.now().strftime('%Y-%m-%dT%H:%M:%S')
-    cv.imwrite(os.path.join(args.output, timestamp + '.jpg'), image)
+    if not args.image:
+        cv.imwrite(os.path.join(args.output, timestamp + '.jpg'), image)
 
     #
     # run image through OCR processing
