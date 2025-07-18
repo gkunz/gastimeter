@@ -13,19 +13,22 @@ def parse_response(response):
     '''
     Parse the result.
     '''
-    # get all words found on line 1
-    line = response['readResult']['blocks'][0]['lines'][0]['text']
-    logging.debug('raw list of words: %s', line)
+    # get all words found on all lines. With rotation preprocessing enabled,
+    # there should actually only be a single line.
+    text = ''
+    for line in response['readResult']['blocks'][0]['lines']:
+        text = text + line['text']
+    logging.debug('concatenated string of lines: %s', text)
 
-    meter_reading_string = line.replace(' ', '')
-    logging.debug('concatenated string of words: %s', meter_reading_string)
+    meter_reading_string = text.replace(' ', '')
+    logging.debug('concatenated string of lines without whitespace: %s', meter_reading_string)
 
     float_meter_reading_string = 0.0
     if '.' in meter_reading_string or ',' in meter_reading_string:
         # check for a comma or decimal point
         if len(meter_reading_string) != 8:
             exit_with_error(
-                'A comma or decimal point was found, but not all 7 decimals ' +
+                'A comma or decimal point was found, but not all 7 digits ' +
                 f'were found: {meter_reading_string}')
         # simply replace all commas with decimal points to allow conversion to float
         float_meter_reading_string = meter_reading_string.replace(',', '.')
@@ -38,7 +41,7 @@ def parse_response(response):
         float_meter_reading_string = ''.join(meter_reading_list)
 
     elif len(meter_reading_string) == 7:
-        # add a decimal point
+        # OCR detected all 7 digits, but not the decimal. Add a decimal.
         float_meter_reading_string = meter_reading_string[:5] + '.' + meter_reading_string[-2:]
 
     else:

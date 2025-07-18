@@ -7,6 +7,7 @@ Apply a predefined and currently not configurable set of transformations
 to a provided image.
 '''
 import cv2 as cv
+import numpy as np
 
 
 def contrast_and_brightness(image):
@@ -17,6 +18,42 @@ def contrast_and_brightness(image):
     brightness = 10
     contrasted = cv.addWeighted(image, contrast, image, 0, brightness)
     return contrasted
+
+def correct_rotation(image):
+    '''
+    Use Hough lines to detect and correct the rotation of the image
+    '''
+    # Focus on horizontal/vertical lines typical in meter displays
+    edges = cv.Canny(image, 50, 150)
+
+    # Use probabilistic Hough transform for better line segments
+    lines = cv.HoughLinesP(edges, 1, np.pi/180, threshold=50, 
+                           minLineLength=50, maxLineGap=10)
+
+    if lines is None:
+        return image, 0
+
+    # Filter for mostly horizontal lines (meter bezels, digit separators)
+    horizontal_angles = []
+    for line in lines:
+        x1, y1, x2, y2 = line[0]
+        angle = np.degrees(np.arctan2(y2 - y1, x2 - x1))
+        if -45 < angle < 45:  # Consider as horizontal
+            horizontal_angles.append(angle)
+
+    if not horizontal_angles:
+        return image
+
+    # Use median angle to avoid outliers
+    rotation_angle = np.median(horizontal_angles)
+
+    # Apply rotation
+    height, width = image.shape[:2]
+    center = (width // 2, height // 2)
+    rotation_matrix = cv.getRotationMatrix2D(center, rotation_angle, 1.0)
+
+    rotated = cv.warpAffine(image, rotation_matrix, (width, height))
+    return rotated
 
 def preprocess_image(image):
     '''
@@ -38,6 +75,7 @@ def preprocess_image(image):
 
     # contrast and brightness
     image = contrast_and_brightness(image)
+    image = correct_rotation(image)
 
     # flip and flop image -- camera is upside down
     image = cv.flip(image, -1)
