@@ -17,7 +17,7 @@ authors = [
 description = "Extract text from an image using Azure Cognitive Services."
 readme = "README.md"
 dependencies = [
-  "opencv-python == 4.13.0.90",
+  "opencv-python == 4.13.0.92",
   "numpy < 3.0.0"
 ]
 
