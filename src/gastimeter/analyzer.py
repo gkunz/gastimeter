@@ -8,6 +8,7 @@ Utilizing Azure AI services to perform OCR on an image.
 import http.client
 import json
 import logging
+import ssl
 import urllib.request
 import urllib.parse
 import urllib.error
@@ -38,7 +39,9 @@ def send_request(image):
     encoded_image = cv.imencode('.jpg', image)[1]
     binary_image = np.array(encoded_image).tobytes()
 
-    conn = http.client.HTTPSConnection(f'{Config.service_name}.cognitiveservices.azure.com')
+    ssl_context = ssl.create_default_context()
+    conn = http.client.HTTPSConnection(f'{Config.service_name}.cognitiveservices.azure.com',
+                                       context=ssl_context)
     conn.request("POST",
                 f"/computervision/imageanalysis:analyze?api-version=2024-02-01&{params}",
                 binary_image,
