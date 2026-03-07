@@ -31,7 +31,7 @@ def correct_rotation(image):
                            minLineLength=50, maxLineGap=10)
 
     if lines is None:
-        return image, 0
+        return image
 
     # Filter for mostly horizontal lines (meter bezels, digit separators)
     horizontal_angles = []
