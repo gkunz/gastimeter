@@ -464,7 +464,8 @@ class TestAnalyzer(unittest.TestCase):
         mock_conn_cls.return_value = mock_conn
 
         send_request(self._make_image())
-        mock_conn_cls.assert_called_once_with('test-service.cognitiveservices.azure.com')
+        mock_conn_cls.assert_called_once()
+        self.assertEqual(mock_conn_cls.call_args[0][0], 'test-service.cognitiveservices.azure.com')
 
     @patch('gastimeter.analyzer.http.client.HTTPSConnection')
     def test_sends_correct_headers(self, mock_conn_cls):
