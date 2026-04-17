@@ -67,8 +67,7 @@ def configure_logging(args) -> None:
     if args.debug:
         level = logging.DEBUG
 
-    if not os.path.exists(args.output):
-        os.mkdir(args.output)
+    os.makedirs(args.output, exist_ok=True)
 
     logging.basicConfig(format='%(asctime)s - %(levelname)s - %(message)s',
                         level=level,
