@@ -15,9 +15,17 @@ def parse_response(response):
     '''
     # get all words found on all lines. With rotation preprocessing enabled,
     # there should actually only be a single line.
+    try:
+        lines = response['readResult']['blocks'][0]['lines']
+    except (KeyError, IndexError, TypeError):
+        exit_with_error('Unexpected OCR response structure: could not extract text lines.')
+
     text = ''
-    for line in response['readResult']['blocks'][0]['lines']:
-        text = text + line['text']
+    for line in lines:
+        try:
+            text = text + line['text']
+        except (KeyError, TypeError):
+            exit_with_error('Unexpected OCR response structure: line missing text field.')
     logging.debug('concatenated string of lines: %s', text)
 
     meter_reading_string = text.replace(' ', '')

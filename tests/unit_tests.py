@@ -233,11 +233,10 @@ class TestConfig(unittest.TestCase):
         'AZURE_SUBSCRIPTION_KEY': '',
         'AZURE_SERVICE_NAME': '',
     })
-    def test_empty_string_env_vars_accepted(self):
-        '''os.environ.get returns '' for set-but-empty vars, which is not None.'''
-        Config.init_config(object())
-        self.assertEqual(Config.subscription_key, '')
-        self.assertEqual(Config.service_name, '')
+    def test_empty_string_env_vars_rejected(self):
+        '''Empty string environment variables should be rejected.'''
+        with self.assertRaises(SystemExit):
+            Config.init_config(object())
 
 
 class TestExitWithError(unittest.TestCase):

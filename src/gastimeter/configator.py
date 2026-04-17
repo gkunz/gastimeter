@@ -31,11 +31,11 @@ class Config:
         cls.args = args
 
         key = os.environ.get('AZURE_SUBSCRIPTION_KEY')
-        if key is None:
-            exit_with_error('AZURE_SUBSCRIPTION_KEY not found in environment.')
+        if not key:
+            exit_with_error('AZURE_SUBSCRIPTION_KEY not found or empty in environment.')
         cls.subscription_key = key
 
         name = os.environ.get('AZURE_SERVICE_NAME')
-        if name is None:
-            exit_with_error('AZURE_SERVICE_NAME not found in environment.')
+        if not name:
+            exit_with_error('AZURE_SERVICE_NAME not found or empty in environment.')
         cls.service_name = name
