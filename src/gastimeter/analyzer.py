@@ -8,6 +8,7 @@ Utilizing Azure AI services to perform OCR on an image.
 import http.client
 import json
 import logging
+import re
 import ssl
 import urllib.request
 import urllib.parse
@@ -18,11 +19,25 @@ import numpy as np
 from gastimeter.configator import Config
 from gastimeter.error import exit_with_error
 
+REQUEST_TIMEOUT = 30
+
+
+def _validate_service_name(name):
+    '''
+    Validate that the Azure service name contains only alphanumeric characters and hyphens.
+    '''
+    if not re.fullmatch(r'[a-zA-Z0-9-]+', name):
+        exit_with_error(
+            f'Invalid AZURE_SERVICE_NAME: \'{name}\'. '
+            'Only alphanumeric characters and hyphens are allowed.')
+
 
 def send_request(image):
     '''
     Sending an image to the Azure AI Vision service instance and perform OCR.
     '''
+    _validate_service_name(Config.service_name)
+
     headers = {
         'Content-Type': 'application/octet-stream',
         'Ocp-Apim-Subscription-Key': Config.subscription_key,
@@ -41,18 +56,21 @@ def send_request(image):
 
     ssl_context = ssl.create_default_context()
     conn = http.client.HTTPSConnection(f'{Config.service_name}.cognitiveservices.azure.com',
-                                       context=ssl_context)
-    conn.request("POST",
-                f"/computervision/imageanalysis:analyze?api-version=2024-02-01&{params}",
-                binary_image,
-                headers)
-    response = conn.getresponse()
+                                       context=ssl_context,
+                                       timeout=REQUEST_TIMEOUT)
+    try:
+        conn.request("POST",
+                    f"/computervision/imageanalysis:analyze?api-version=2024-02-01&{params}",
+                    binary_image,
+                    headers)
+        response = conn.getresponse()
 
-    if response.status != 200:
-        exit_with_error(f'Status code {response.status}. Response is {response.read()}')
+        if response.status != 200:
+            exit_with_error(f'Request failed with status code {response.status}.')
 
-    data = json.loads(response.read().decode())
-    logging.debug('Response data: %s', data)
+        data = json.loads(response.read().decode())
+        logging.debug('Response data: %s', data)
 
-    conn.close()
-    return data
+        return data
+    finally:
+        conn.close()
