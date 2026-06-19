@@ -7,3 +7,5 @@ venv
 dist
 build
 src/gastimeter.egg-info/
+**/__pycache__
+**/.DS_Store
