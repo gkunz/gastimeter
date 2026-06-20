@@ -12,3 +12,9 @@ License: CC-BY-4.0
 Files: tests/testdata/*
 Copyright: Georg Kunz, <der.schorsch@gmail.com>
 License: CC-BY-4.0
+
+# security insights
+Files: .github/security-insights.yaml
+Copyright: Georg Kunz, <der.schorsch@gmail.com>
+License: CC-BY-4.0
+
