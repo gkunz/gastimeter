@@ -1,0 +1,44 @@
+header:
+  schema-version: 2.2.0
+  last-updated: '2026-06-20'
+  last-reviewed: '2026-06-20'
+  url: https://raw.githubusercontent.com/gkunz/gastimeter/refs/heads/main/.github/security-insights.yml
+  comment: |
+    This is the security-insights file for gastimeter.
+
+project:
+  name: gastimeter
+  administrators:
+    - name: Georg Kunz
+      affiliation: none
+      email: no@email.com
+      social: https://no.social.media.com/
+      primary: true
+  repositories:
+    - name: gastimeter
+      url: https://github.com/gkunz/gastimeter/
+      comment: |
+        gastimeter comprises only one repo.
+  vulnerability-reporting:
+    reports-accepted: true
+    bug-bounty-available: false
+
+repository:
+  url: https://github.com/gkunz/gastimeter/
+  status: active
+  accepts-change-request: true
+  accepts-automated-change-request: false
+  core-team:
+    - name:        Georg Kunz
+      affiliation: none
+      email:       no@email.com
+      social:      https://no.social.media.com/
+      primary:     true
+  license:
+    url: https://raw.githubusercontent.com/gkunz/gastimeter/refs/heads/main/LICENSES/MIT.txt
+    expression: MIT
+  security:
+    assessments:
+      self:
+        comment: |
+          Self assessment has not yet been completed.
