@@ -14,7 +14,7 @@ Copyright: Georg Kunz, <der.schorsch@gmail.com>
 License: CC-BY-4.0
 
 # security insights
-Files: .github/security-insights.yaml
+Files: .github/security-insights.yml
 Copyright: Georg Kunz, <der.schorsch@gmail.com>
 License: CC-BY-4.0
 
