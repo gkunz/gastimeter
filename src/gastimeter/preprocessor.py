@@ -36,7 +36,7 @@ def correct_rotation(image):
     # Filter for mostly horizontal lines (meter bezels, digit separators)
     horizontal_angles = []
     for line in lines:
-        x1, y1, x2, y2 = line[0]
+        x1, y1, x2, y2 = line
         angle = np.degrees(np.arctan2(y2 - y1, x2 - x1))
         if -45 < angle < 45:  # Consider as horizontal
             horizontal_angles.append(angle)
